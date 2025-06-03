@@ -1,14 +1,16 @@
-package com.example.myapplication.presentation.ViewModels
+package com.example.myapplication.presentation.MarvelList
 
 import com.example.myapplication.domain.Entities.CharacterEntity
 import com.example.myapplication.domain.Entities.Filters.CharacterFilterEntity
 import com.example.myapplication.domain.UseCases.GetCharactersUseCaseContract
 import com.example.myapplication.domain.UseCases.GetCharactersUseCaseInput
 import com.example.myapplication.utils.ErrorEntity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import com.example.myapplication.utils.LoaderState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class MarvelListViewModel(
     private val getCharactersUseCase: GetCharactersUseCaseContract,
@@ -20,7 +22,8 @@ class MarvelListViewModel(
     private var hasMoreData = true
     private var isLoadingData = false
 
-    private val _state: MutableStateFlow<LoaderState<List<CharacterEntity>>> = MutableStateFlow(LoaderState.Loading)
+    private val _state: MutableStateFlow<LoaderState<List<CharacterEntity>>> =
+        MutableStateFlow(LoaderState.Loading)
     val state: StateFlow<LoaderState<List<CharacterEntity>>> = _state.asStateFlow()
 
     init {
