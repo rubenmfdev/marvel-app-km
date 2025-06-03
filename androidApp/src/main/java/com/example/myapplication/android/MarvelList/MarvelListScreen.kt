@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.domain.Entities.CharacterEntity
-import com.example.myapplication.presentation.ViewModels.MarvelListViewModel
 import com.example.myapplication.utils.LoaderState
 import androidx.compose.ui.Alignment
 

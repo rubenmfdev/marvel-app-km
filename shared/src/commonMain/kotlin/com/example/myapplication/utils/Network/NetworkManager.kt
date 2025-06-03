@@ -28,9 +28,13 @@ class KtorNetworkManager(
     ): Result<T> {
         return withContext(Dispatchers.Default) {
             try {
-                val response: HttpResponse = client.request {
+                val response: HttpResponse = client.request(router.fullUrl) {
                     method = router.method
-                    url(router.fullUrl)
+                    url {
+                        router.finalQueryParams.forEach { (key, value) ->
+                            parameters.append(key, value)
+                        }
+                    }
                     headers {
                         router.headers.forEach { (key, value) -> append(key, value) }
                     }
@@ -40,10 +44,9 @@ class KtorNetworkManager(
                 }
 
                 val responseBody = Json.decodeFromString(responseType, response.bodyAsText())
-
                 Result.success(responseBody)
             } catch (e: Exception) {
-                Result.failure(ErrorEntity.Generic)
+                Result.failure(ErrorEntity.Network)
             }
         }
     }

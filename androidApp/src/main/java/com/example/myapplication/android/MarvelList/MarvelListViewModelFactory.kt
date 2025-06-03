@@ -1,7 +1,7 @@
 package com.example.myapplication.android.MarvelList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.presentation.ViewModels.MarvelListViewModel
+import com.example.myapplication.presentation.MarvelList.MarvelListViewModel
 import com.example.myapplication.domain.UseCases.GetCharactersUseCase
 import com.example.myapplication.data.Repositories.CharactersDataRepository
 import com.example.myapplication.data.Network.DataSources.CharactersNetworkDataSourceImpl

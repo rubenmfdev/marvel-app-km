@@ -12,7 +12,7 @@ interface BaseRouter {
     val authType: AuthType
 
     val fullUrl: String
-        get() = "$baseUrl/$path".replace("//", "/")
+        get() = if (baseUrl.endsWith("/")) "$baseUrl$path" else "$baseUrl/$path"
 
     val finalQueryParams: Map<String, String>
         get() {
@@ -24,5 +24,4 @@ interface BaseRouter {
                 authParams
             }
         }
-
 }

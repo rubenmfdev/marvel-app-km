@@ -21,8 +21,8 @@ enum class AuthType {
     }
 
     private fun getHash(timestamp: String): String {
-        val privateKey = "bace235de79e2003f445f119a94e14c23dbea789"
-        val publicKey = "91716016929e144c5f696e0bb2acdc25"
+        val privateKey = "ADD_API_KEY"
+        val publicKey = "ADD_API_KEY"
         return (timestamp + privateKey + publicKey).toMD5()
     }
 }
