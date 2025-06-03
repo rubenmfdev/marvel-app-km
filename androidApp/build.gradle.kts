@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.marvelappkm.android"
+    namespace = "com.example.myapplication.android"
     compileSdk = 35
     defaultConfig {
-        applicationId = "com.example.marvelappkm.android"
+        applicationId = "com.example.myapplication.android"
         minSdk = 33
         targetSdk = 35
         versionCode = 1
@@ -39,8 +39,13 @@ android {
 dependencies {
     implementation(projects.shared)
     implementation(libs.compose.ui)
+    implementation(libs.compose.foundation)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.material3.android)
     debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.ktor.client.okhttp)
 }

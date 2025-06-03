@@ -1,0 +1,108 @@
+package com.example.myapplication.utils.Network
+
+enum class HttpStatusCode(val code: Int) {
+
+    // Informational - 1xx
+    CONTINUE(100),
+    SWITCHING_PROTOCOLS(101),
+    PROCESSING(102),
+
+    // Success - 2xx
+    OK(200),
+    CREATED(201),
+    ACCEPTED(202),
+    NON_AUTHORITATIVE_INFORMATION(203),
+    NO_CONTENT(204),
+    RESET_CONTENT(205),
+    PARTIAL_CONTENT(206),
+    MULTI_STATUS(207),
+    ALREADY_REPORTED(208),
+    IM_USED(226),
+
+    // Redirection - 3xx
+    MULTIPLE_CHOICES(300),
+    MOVED_PERMANENTLY(301),
+    FOUND(302),
+    SEE_OTHER(303),
+    NOT_MODIFIED(304),
+    USE_PROXY(305),
+    SWITCH_PROXY(306),
+    TEMPORARY_REDIRECT(307),
+    PERMANENT_REDIRECT(308),
+
+    // Client Error - 4xx
+    BAD_REQUEST(400),
+    UNAUTHORIZED(401),
+    PAYMENT_REQUIRED(402),
+    FORBIDDEN(403),
+    NOT_FOUND(404),
+    METHOD_NOT_ALLOWED(405),
+    NOT_ACCEPTABLE(406),
+    PROXY_AUTHENTICATION_REQUIRED(407),
+    REQUEST_TIMEOUT(408),
+    CONFLICT(409),
+    GONE(410),
+    LENGTH_REQUIRED(411),
+    PRECONDITION_FAILED(412),
+    PAYLOAD_TOO_LARGE(413),
+    URI_TOO_LONG(414),
+    UNSUPPORTED_MEDIA_TYPE(415),
+    RANGE_NOT_SATISFIABLE(416),
+    EXPECTATION_FAILED(417),
+    TEAPOT(418),
+    MISDIRECTED_REQUEST(421),
+    UNPROCESSABLE_ENTITY(422),
+    LOCKED(423),
+    FAILED_DEPENDENCY(424),
+    UPGRADE_REQUIRED(426),
+    PRECONDITION_REQUIRED(428),
+    TOO_MANY_REQUESTS(429),
+    REQUEST_HEADER_FIELDS_TOO_LARGE(431),
+    NO_RESPONSE(444),
+    UNAVAILABLE_FOR_LEGAL_REASONS(451),
+    SSL_CERTIFICATE_ERROR(495),
+    SSL_CERTIFICATE_REQUIRED(496),
+    HTTP_REQUEST_SENT_TO_HTTPS_PORT(497),
+    CLIENT_CLOSED_REQUEST(499),
+
+    // Server Error - 5xx
+    INTERNAL_SERVER_ERROR(500),
+    NOT_IMPLEMENTED(501),
+    BAD_GATEWAY(502),
+    SERVICE_UNAVAILABLE(503),
+    GATEWAY_TIMEOUT(504),
+    HTTP_VERSION_NOT_SUPPORTED(505),
+    VARIANT_ALSO_NEGOTIATES(506),
+    INSUFFICIENT_STORAGE(507),
+    LOOP_DETECTED(508),
+    NOT_EXTENDED(510),
+    NETWORK_AUTHENTICATION_REQUIRED(511),
+
+    // Unknown
+    UNKNOWN(-1);
+
+    val responseType: ResponseType
+        get() = when (code) {
+            in 100..199 -> ResponseType.INFORMATIONAL
+            in 200..299 -> ResponseType.SUCCESS
+            in 300..399 -> ResponseType.REDIRECTION
+            in 400..499 -> ResponseType.CLIENT_ERROR
+            in 500..599 -> ResponseType.SERVER_ERROR
+            else -> ResponseType.UNDEFINED
+        }
+
+    companion object {
+        fun fromCode(code: Int): HttpStatusCode {
+            return HttpStatusCode.entries.firstOrNull { it.code == code } ?: UNKNOWN
+        }
+    }
+
+    enum class ResponseType {
+        INFORMATIONAL,
+        SUCCESS,
+        REDIRECTION,
+        CLIENT_ERROR,
+        SERVER_ERROR,
+        UNDEFINED
+    }
+}

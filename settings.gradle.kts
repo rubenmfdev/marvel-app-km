@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Marvel_App_KM"
+rootProject.name = "My_Application"
 include(":androidApp")
 include(":shared")
