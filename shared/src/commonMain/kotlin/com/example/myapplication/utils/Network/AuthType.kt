@@ -12,7 +12,7 @@ enum class AuthType {
             MARVEL -> {
                 val timestamp = Clock.System.now().toEpochMilliseconds().toString()
                 mapOf(
-                    "apikey" to "ADD_API_KEY",
+                    "apikey" to "66a2342235b5a50f11854a107817b93f",
                     "ts" to timestamp,
                     "hash" to getHash(timestamp)
                 )
@@ -21,8 +21,8 @@ enum class AuthType {
     }
 
     private fun getHash(timestamp: String): String {
-        val privateKey = "ADD_API_KEY"
-        val publicKey = "ADD_API_KEY"
+        val privateKey = "8e626a06a59f36334eacd37b873e2345b4562bd7"
+        val publicKey = "66a2342235b5a50f11854a107817b93f"
         return (timestamp + privateKey + publicKey).toMD5()
     }
 }

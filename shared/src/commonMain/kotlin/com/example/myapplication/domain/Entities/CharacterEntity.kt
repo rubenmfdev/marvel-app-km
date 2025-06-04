@@ -3,7 +3,7 @@ package com.example.myapplication.domain.Entities
 data class CharacterEntity(
     val id: Int,
     val name: String,
-    val description: String,
+    val characterDescription: String,
     val modified: String,
     val resourceURI: String,
     val urls: List<UrlEntity>?,
@@ -20,7 +20,7 @@ data class CharacterEntity(
         val mock = CharacterEntity(
             id = 0,
             name = "Comic test title & Avengers",
-            description = "Test description",
+            characterDescription = "Test description",
             modified = "17/08/1997",
             resourceURI = "",
             urls = null,

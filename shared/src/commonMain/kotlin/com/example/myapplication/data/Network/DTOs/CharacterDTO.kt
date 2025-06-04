@@ -22,7 +22,7 @@ data class CharacterDTO(
         return CharacterEntity(
             id = id ?: 0,
             name = name.orEmpty(),
-            description = characterDescription.orEmpty(),
+            characterDescription = characterDescription.orEmpty(),
             modified = modified.orEmpty(),
             resourceURI = resourceURI.orEmpty(),
             urls = urls?.map { it.toDomain() },
